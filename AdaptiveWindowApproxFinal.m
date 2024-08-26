@@ -87,7 +87,7 @@ end
 end
 Pxl_Range = Pxl_SkwRange.*Pxl_RangeFinal+eps; % 1./((1+exp(-Pxl_RangeFinal)).*(1+exp(-Pxl_SkwRange)))+eps;%(Pxl_SkwRange.*Pxl_RangeFinal)+eps;
 histfit(Pxl_Range,150,'Lognormal');
-InputImage = RefImage;
+% InputImage = RefImage;
 
 Wadpt = ones(m,n)*13 ; w=[3 5 8 13 21 34];
 wmin = 2;   eps = 0.001; wind = Widx;
@@ -190,11 +190,11 @@ StandaredPattern =  ones(length(LocalPatternD2),1)';%/length(LocalPattern);  imc
 JSDD22 = JSDiv(LocalPatternD2,StandaredPattern);
  
  
-temp1 = [JSDH1 JSDV1 JSDD11 JSDD21]; % temp1 = sort(temp1); 
+temp1 = [JSDH1 JSDV1 JSDD11 JSDD21];  temp1 = sort(temp1); 
 temp2 = [JSDH2 JSDV2 JSDD12 JSDD22]; 
 
 
-if(w>=wmin+0 && min(temp1(1:4)) >= mean(temp2)) 
+if( mean(temp1(1:3)) >= mean(temp2)) % w>=wmin+0 && 
     EdgeMap(pxl,band) = 0;
 end
 end
